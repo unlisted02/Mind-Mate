@@ -42,7 +42,10 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box sx={{ textAlign: 'center', height: '100vh' }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: 'center', height: '100vh' }}
+    >
       <Typography
         variant='h6'
         sx={{
@@ -54,17 +57,9 @@ function DrawerAppBar(props) {
           gap: 1,
           fontSize: '1.5rem',
           height: '3.5rem',
-          marginLeft: { xs: '-3rem', sm: 'auto' },
+          marginLeft: { sm: 'auto' },
         }}
       >
-        <IconButton
-          onClick={handleDrawerToggle}
-          aria-label='open drawer'
-          edge='start'
-          sx={{ display: { sm: 'none' }, left: '-2.45rem' }}
-        >
-          <MenuIcon fontSize='large' />
-        </IconButton>
         <Image src={MindMateLogo} alt='logo' width='40' height='40' />
         MindMate
       </Typography>
@@ -73,7 +68,7 @@ function DrawerAppBar(props) {
         {navItems.map((item, index) => (
           <ListItem key={index} disablePadding>
             <Link href={item.url}>
-              <ListItemButton onClick={handleDrawerToggle}>
+              <ListItemButton sx={{ width: '100vw' }}>
                 <ListItemIcon sx={{ minWidth: 0, marginRight: '1rem' }}>
                   {item.icon}
                 </ListItemIcon>
