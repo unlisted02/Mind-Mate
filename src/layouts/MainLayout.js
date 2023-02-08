@@ -1,18 +1,10 @@
 // components/Layout.js
 import DrawerAppBar from '@/components/DrawerAppBar';
 import Head from 'next/head';
-import { createTheme, ThemeProvider } from '@mui/material';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#2196f3',
-    },
-  },
-});
+import { NextUIProvider } from '@nextui-org/react';
 
 const MainLayout = ({ children }) => (
-  <ThemeProvider theme={theme}>
+  <NextUIProvider>
     <Head>
       <meta name='title' content='MindMate' />
       <meta
@@ -27,11 +19,10 @@ const MainLayout = ({ children }) => (
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
       <meta name='language' content='English' />
       <meta name='author' content='Lakshan Rukantha' />
-
     </Head>
     <DrawerAppBar />
     {children}
-  </ThemeProvider>
+  </NextUIProvider>
 );
 
 export default MainLayout;
