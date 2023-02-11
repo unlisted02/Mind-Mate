@@ -16,7 +16,7 @@ const MainLayout = ({ children }) => (
         content='Mental Health, Personalized Support, Web App, Negative Thoughts, Solutions, Happier Life, Therapy, Chatbot, Depression, Anxiety, Stress, Mental Health Support, Emotional Well-being, Mindfulness'
       />
       <meta name='robots' content='index, follow' />
-      <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+      <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
       <meta name='language' content='English' />
       <meta name='author' content='Lakshan Rukantha' />
     </Head>

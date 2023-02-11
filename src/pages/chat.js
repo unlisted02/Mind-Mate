@@ -1,41 +1,210 @@
 import MainLayout from '@/layouts/MainLayout';
-import { Container } from '@nextui-org/react';
+import { useState } from 'react';
+import {
+  Container,
+  Card,
+  Button,
+  Input,
+  Textarea,
+  Dropdown,
+  Loading,
+  Text,
+} from '@nextui-org/react';
+import React from 'react';
 import Head from 'next/head';
 
 const Chat = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [age, setAge] = useState('');
+  const [ageStatus, setAgeStatus] = useState('primary');
+  const [gender, setGender] = useState(new Set(['Gender']));
+  const [genderStatus, setGenderStatus] = useState('primary');
+  const [problem, setProblem] = useState('');
+  const [problemStatus, setProblemStatus] = useState('primary');
+
+  const selectedValue = React.useMemo(
+    () => Array.from(gender).join(', ').replaceAll('_', ' '),
+    [gender]
+  );
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (age == '') {
+      setAgeStatus('error');
+      setTimeout(() => {
+        setAgeStatus('primary');
+      }, 3000);
+
+      return;
+    }
+    if (gender.anchorKey == undefined) {
+      setGenderStatus('error');
+      setTimeout(() => {
+        setGenderStatus('primary');
+      }, 3000);
+
+      return;
+    }
+    if (problem == '') {
+      setProblemStatus('error');
+      setTimeout(() => {
+        setProblemStatus('primary');
+      }, 3000);
+
+      return;
+    } else {
+      console.log(age);
+      console.log(gender.anchorKey);
+      console.log(problem);
+      setAge('');
+      setGender(new Set(['Gender']));
+      setProblem('');
+    }
+  };
+
   return (
     <MainLayout>
       <Head>
         <title>MindMate - Chat</title>
       </Head>
       <Container>
-          <h1>Chat Page</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-            placeat unde sequi sed veritatis autem obcaecati voluptate ut quae
-            provident eligendi quod odio error porro quas explicabo, dignissimos
-            fuga quis minus ipsum eaque totam perferendis nihil. Et ipsa
-            excepturi eos! Quas totam sed omnis similique, corrupti tempora! Ad
-            praesentium ipsa quas atque mollitia, quam et doloremque laborum
-            amet sequi aut consequuntur voluptatibus odit numquam unde
-            laudantium dolores cum sit iure culpa vitae. Quasi enim iure quo!
-            Temporibus asperiores neque, sit earum deleniti at dolorem ipsum
-            dolores porro quasi ipsa dolorum soluta expedita debitis alias
-            libero voluptas est eveniet quos maiores corrupti magni placeat
-            cumque atque? Suscipit, impedit soluta aut totam corrupti cum
-            nostrum quidem earum nulla sit iste nihil assumenda ratione
-            voluptatem aliquam non sunt odit quam. Exercitationem voluptate
-            neque tenetur possimus nemo rerum fugiat iusto quam aperiam tempore
-            vitae, veritatis eius aspernatur! Iure aut vitae vel, porro sequi
-            quod animi possimus nostrum debitis optio, nemo adipisci voluptate
-            recusandae saepe dolorum modi! Ea quod dolore aut reiciendis!
-            Aliquam, pariatur minus qui illo magnam eius velit, suscipit
-            perferendis quae, accusantium ex nisi nam. Ab, numquam quisquam
-            rerum cupiditate exercitationem voluptatem vitae quas consectetur
-            officiis. Mollitia, natus temporibus. Itaque quo fugiat soluta
-            dolore esse.
-          </p>
-        </Container>
+        <form onSubmit={handleSubmit}>
+          <Card
+            variant='flat'
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              height: 'calc(100vh - 92px)',
+              margin: '0.5rem 0',
+              padding: '0.5rem',
+            }}
+          >
+            <Text b style={{ marginBottom: '0.5rem' }}>
+              Realtime Health Support
+            </Text>
+            <Card.Divider />
+            <Card
+              variant='flat'
+              style={{
+                display: 'flex',
+                height: 'calc(100% - 15rem)',
+                marginBottom: '0.5rem',
+                borderRadius: '0rem',
+                backgroundColor: 'primary',
+                overflowY: 'auto',
+                overflowX: 'hidden',
+                maxWidth: '100%',
+              }}
+            >
+              {problem}
+            </Card>
+            <Card
+              variant='bordered'
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexDirection: 'column',
+              }}
+            >
+              <Card
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0 0.5rem',
+                }}
+              >
+                <Card
+                  variant='flat'
+                  style={{
+                    display: 'flex',
+                    width: '100%',
+                    flexDirection: 'row',
+                    gap: '0.5rem',
+                    margin: '0.5rem',
+                    padding: '0.5rem',
+                  }}
+                >
+                  <Input
+                    id='age'
+                    onChange={(e) => setAge(e.target.value)}
+                    value={age}
+                    aria-label='age'
+                    name='age'
+                    status={ageStatus}
+                    placeholder='Enter your age..'
+                    type='number'
+                  />
+                  <Dropdown
+                    name='gender'
+                    onChange={(e) => setGender(e.target.value)}
+                  >
+                    <Dropdown.Button
+                      color={genderStatus}
+                      id='submit'
+                      flat
+                      css={{ tt: 'capitalize' }}
+                    >
+                      {selectedValue}
+                    </Dropdown.Button>
+                    <Dropdown.Menu
+                      aria-label='gender'
+                      disallowEmptySelection
+                      selectionMode='single'
+                      selectedKeys={gender}
+                      onSelectionChange={setGender}
+                    >
+                      <Dropdown.Item
+                        onClick={() => setGender('male')}
+                        key='male'
+                      >
+                        Male
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={() => setGender('female')}
+                        key='female'
+                      >
+                        Female
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Card>
+
+                <Textarea
+                  status={problemStatus}
+                  name='query'
+                  aria-label='query'
+                  placeholder='Type something in your mind..'
+                  onChange={(e) => setProblem(e.target.value)}
+                  value={problem}
+                  minRows={3}
+                  maxRows={4}
+                  fullWidth
+                />
+                <Button
+                  id='submit'
+                  type='submit'
+                  disabled={isLoading}
+                  aria-label='submit'
+                  style={{ width: '100vw', marginTop: '0.5rem' }}
+                >
+                  {isLoading && (
+                    <Loading
+                      color='currentColor'
+                      size='sm'
+                      style={{ marginRight: '1rem' }}
+                    />
+                  )}
+                  Ask from MindMate
+                </Button>
+              </Card>
+            </Card>
+          </Card>
+        </form>
+      </Container>
     </MainLayout>
   );
 };
