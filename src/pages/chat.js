@@ -1,4 +1,5 @@
 import MainLayout from '@/layouts/MainLayout';
+import axios from 'axios';
 import { useState } from 'react';
 import {
   Container,
@@ -21,6 +22,7 @@ const Chat = () => {
   const [genderStatus, setGenderStatus] = useState('primary');
   const [problem, setProblem] = useState('');
   const [problemStatus, setProblemStatus] = useState('primary');
+  const [solution, setSolution] = useState('');
 
   const selectedValue = React.useMemo(
     () => Array.from(gender).join(', ').replaceAll('_', ' '),
@@ -54,12 +56,29 @@ const Chat = () => {
 
       return;
     } else {
-      console.log(age);
-      console.log(gender.anchorKey);
-      console.log(problem);
       setAge('');
       setGender(new Set(['Gender']));
       setProblem('');
+      setSolution('');
+      setIsLoading(true);
+      axios
+        .post('/api/chatbot', {
+          age: age,
+          gender: gender,
+          problem: problem,
+        })
+        .then(function (response) {
+          console.log(response);
+          let formattedResponse = response.data.result.replace(/\n/g, '<br>');
+          formattedResponse = formattedResponse.replace(/^<br>/, '');
+          formattedResponse = formattedResponse.replace(/^<br>/, '');
+          setSolution(formattedResponse);
+          setIsLoading(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log(solution);
     }
   };
 
@@ -90,7 +109,7 @@ const Chat = () => {
               style={{
                 display: 'flex',
                 height: 'calc(100% - 15rem)',
-                marginBottom: '0.5rem',
+                margin: '0.5rem 0',
                 borderRadius: '0rem',
                 backgroundColor: 'primary',
                 overflowY: 'auto',
@@ -98,7 +117,7 @@ const Chat = () => {
                 maxWidth: '100%',
               }}
             >
-              {problem}
+              <div dangerouslySetInnerHTML={{ __html: solution }} />
             </Card>
             <Card
               variant='bordered'
