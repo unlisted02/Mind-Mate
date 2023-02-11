@@ -29,7 +29,7 @@ const Chat = () => {
     [gender]
   );
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (age == '') {
@@ -61,14 +61,13 @@ const Chat = () => {
       setProblem('');
       setSolution('');
       setIsLoading(true);
-      axios
+      await axios
         .post('/api/chatbot', {
           age: age,
           gender: gender,
           problem: problem,
         })
         .then(function (response) {
-          console.log(response);
           let formattedResponse = response.data.result.replace(/\n/g, '<br>');
           formattedResponse = formattedResponse.replace(/^<br>/, '');
           formattedResponse = formattedResponse.replace(/^<br>/, '');
@@ -78,7 +77,6 @@ const Chat = () => {
         .catch(function (error) {
           console.log(error);
         });
-      console.log(solution);
     }
   };
 
@@ -117,7 +115,14 @@ const Chat = () => {
                 maxWidth: '100%',
               }}
             >
-              <div dangerouslySetInnerHTML={{ __html: solution }} />
+              {isLoading ? (
+                <Loading
+                  style={{ paddingTop: '0.4rem', alignSelf: 'flex-start' }}
+                  type='points'
+                />
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: solution }} />
+              )}
             </Card>
             <Card
               variant='bordered'
@@ -149,6 +154,7 @@ const Chat = () => {
                 >
                   <Input
                     id='age'
+                    disabled={isLoading}
                     onChange={(e) => setAge(e.target.value)}
                     value={age}
                     aria-label='age'
@@ -163,6 +169,7 @@ const Chat = () => {
                   >
                     <Dropdown.Button
                       color={genderStatus}
+                      disabled={isLoading}
                       id='submit'
                       flat
                       css={{ tt: 'capitalize' }}
@@ -191,9 +198,9 @@ const Chat = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                 </Card>
-
                 <Textarea
                   status={problemStatus}
+                  disabled={isLoading}
                   name='query'
                   aria-label='query'
                   placeholder='Type something in your mind..'
