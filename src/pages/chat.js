@@ -10,6 +10,7 @@ import {
   Dropdown,
   Loading,
   Text,
+  Badge,
 } from '@nextui-org/react';
 import React from 'react';
 import Head from 'next/head';
@@ -23,6 +24,7 @@ const Chat = () => {
   const [problem, setProblem] = useState('');
   const [problemStatus, setProblemStatus] = useState('primary');
   const [solution, setSolution] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const selectedValue = React.useMemo(
     () => Array.from(gender).join(', ').replaceAll('_', ' '),
@@ -61,24 +63,23 @@ const Chat = () => {
       setProblem('');
       setSolution('');
       setIsLoading(true);
-      const fetchData = async () => {
-        try {
-          setIsLoading(true);
-          const response = await axios.post('/api/chatbot', {
-            age: age,
-            gender: gender,
-            problem: problem,
-          });
+      await axios
+        .post('/api/chatbot', {
+          age: age,
+          gender: gender,
+          problem: problem,
+        })
+        .then(function (response) {
           let formattedResponse = response.data.result.replace(/\n/g, '<br>');
           formattedResponse = formattedResponse.replace(/^<br>/, '');
           formattedResponse = formattedResponse.replace(/^<br>/, '');
           setSolution(formattedResponse);
           setIsLoading(false);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      fetchData();
+        })
+        .catch(function (error) {
+          setIsLoading(false);
+          setErrorMessage(error.message);
+        });
     }
   };
 
@@ -122,6 +123,24 @@ const Chat = () => {
                   style={{ paddingTop: '0.4rem', alignSelf: 'flex-start' }}
                   type='points'
                 />
+              ) : errorMessage ? (
+                <Card
+                  variant='flat'
+                  style={{ display: 'flex', flexDirection: 'row' }}
+                >
+                  <Badge
+                    color='error'
+                    style={{
+                      maxHeight: '1.4rem',
+                      lineHeight: '1.4rem',
+                      marginTop: '0.2rem',
+                      marginRight: '0.5rem',
+                    }}
+                  >
+                    Error
+                  </Badge>
+                  <Text color='error'>{errorMessage}</Text>
+                </Card>
               ) : (
                 <p dangerouslySetInnerHTML={{ __html: solution }} />
               )}
