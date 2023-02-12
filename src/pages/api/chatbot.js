@@ -20,6 +20,6 @@ export default async function (req, res) {
   });
 
   function generatePrompt(gender, age, problem) {
-    return `I am a ${age} year old ${gender} looking for help with a mental health solution for "${problem}".`;
+    return `As a ${age} year old ${gender}, I need personalised mental health solutions and recommendations. these are in my mind "${problem}".`;
   }
 }
