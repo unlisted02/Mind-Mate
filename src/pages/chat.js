@@ -64,19 +64,12 @@ const Chat = () => {
       const fetchData = async () => {
         try {
           setIsLoading(true);
-          const response = await fetch('/api/chatbot', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              age: age,
-              gender: gender,
-              problem: problem,
-            }),
+          const response = await axios.post('/api/chatbot', {
+            age: age,
+            gender: gender,
+            problem: problem,
           });
-          const data = await response.json();
-          let formattedResponse = data.result.replace(/\n/g, '<br>');
+          let formattedResponse = response.data.result.replace(/\n/g, '<br>');
           formattedResponse = formattedResponse.replace(/^<br>/, '');
           formattedResponse = formattedResponse.replace(/^<br>/, '');
           setSolution(formattedResponse);
