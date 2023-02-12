@@ -99,7 +99,7 @@ const Chat = () => {
             }}
           >
             <Text b style={{ marginBottom: '0.5rem' }}>
-              Realtime Health Support
+              AI Health Support
             </Text>
             <Card.Divider />
             <Card
