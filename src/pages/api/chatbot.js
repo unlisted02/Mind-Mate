@@ -7,6 +7,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
+  res.setTimeout(10000);
   const { gender, age, problem } = req.body;
   const completion = await openai.createCompletion({
     model: 'text-davinci-003',
