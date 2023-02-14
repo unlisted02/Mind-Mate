@@ -64,15 +64,15 @@ const Chat = () => {
       setSolution('');
       setIsLoading(true);
       await axios
-        .post('/api/chatbot', {
+        .post('https://mind-mate-sv15.onrender.com/api/conversation', {
           age: age,
           gender: gender,
           problem: problem,
         })
         .then(function (response) {
-          let formattedResponse = response.data.result.replace(/\n/g, '<br>');
-          formattedResponse = formattedResponse.replace(/^<br>/, '');
-          formattedResponse = formattedResponse.replace(/^<br>/, '');
+          let formattedResponse = response.data.text;
+          formattedResponse = formattedResponse.replace(/^\n/, '');
+          formattedResponse = formattedResponse.replace(/^\n/, '');
           setSolution(formattedResponse);
           setIsLoading(false);
         })
@@ -142,7 +142,7 @@ const Chat = () => {
                   <Text color='error'>{errorMessage}</Text>
                 </Card>
               ) : (
-                <p dangerouslySetInnerHTML={{ __html: solution }} />
+                <p style={{ whiteSpace: 'pre-line' }}>{solution}</p>
               )}
             </Card>
             <Card
