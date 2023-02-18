@@ -2,6 +2,7 @@
 import DrawerAppBar from '@/components/DrawerAppBar';
 import Head from 'next/head';
 import { NextUIProvider } from '@nextui-org/react';
+import Footer from '@/components/footer';
 
 const MainLayout = ({ children }) => (
   <NextUIProvider>
@@ -22,6 +23,7 @@ const MainLayout = ({ children }) => (
     </Head>
     <DrawerAppBar />
     {children}
+    <Footer/>
   </NextUIProvider>
 );
 
