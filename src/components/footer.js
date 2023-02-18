@@ -6,7 +6,8 @@ function Footer() {
       <Text
         style={{
           textAlign: 'center',
-          background: 'linear-gradient(to bottom, #ffffff00, #87cefa)',
+          backgroundColor: '#bce5ff',
+          background: 'linear-gradient(to bottom, #bce5ff, #97cefa)',
         }}
       >
         Made with &hearts; by Lakshan Rukantha
