@@ -37,7 +37,7 @@
 .mainWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   min-height: calc(100vh - 136px);
   margin: 1rem auto;
   padding: 0.5rem;
