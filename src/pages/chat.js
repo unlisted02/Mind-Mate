@@ -91,7 +91,7 @@ const Chat = () => {
       <Container>
         <form onSubmit={handleSubmit}>
           <Card
-            variant='flat'
+            variant='bordered'
             style={{
               display: 'flex',
               alignItems: 'center',

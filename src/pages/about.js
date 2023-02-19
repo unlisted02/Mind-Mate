@@ -1,6 +1,14 @@
 import MainLayout from '@/layouts/MainLayout';
-import { Container } from '@nextui-org/react';
+import Image from 'next/image';
+import MindMateLogo from '../../public/mindmate-logo.png';
+import { Container, Card, Text } from '@nextui-org/react';
+import styles from '../styles/about.module.css';
+import PublicIcon from '@mui/icons-material/Public';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -9,31 +17,60 @@ const About = () => {
         <title>MindMate - About</title>
       </Head>
       <Container>
-        <h1>About Page</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          placeat unde sequi sed veritatis autem obcaecati voluptate ut quae
-          provident eligendi quod odio error porro quas explicabo, dignissimos
-          fuga quis minus ipsum eaque totam perferendis nihil. Et ipsa excepturi
-          eos! Quas totam sed omnis similique, corrupti tempora! Ad praesentium
-          ipsa quas atque mollitia, quam et doloremque laborum amet sequi aut
-          consequuntur voluptatibus odit numquam unde laudantium dolores cum sit
-          iure culpa vitae. Quasi enim iure quo! Temporibus asperiores neque,
-          sit earum deleniti at dolorem ipsum dolores porro quasi ipsa dolorum
-          soluta expedita debitis alias libero voluptas est eveniet quos maiores
-          corrupti magni placeat cumque atque? Suscipit, impedit soluta aut
-          totam corrupti cum nostrum quidem earum nulla sit iste nihil assumenda
-          ratione voluptatem aliquam non sunt odit quam. Exercitationem
-          voluptate neque tenetur possimus nemo rerum fugiat iusto quam aperiam
-          tempore vitae, veritatis eius aspernatur! Iure aut vitae vel, porro
-          sequi quod animi possimus nostrum debitis optio, nemo adipisci
-          voluptate recusandae saepe dolorum modi! Ea quod dolore aut
-          reiciendis! Aliquam, pariatur minus qui illo magnam eius velit,
-          suscipit perferendis quae, accusantium ex nisi nam. Ab, numquam
-          quisquam rerum cupiditate exercitationem voluptatem vitae quas
-          consectetur officiis. Mollitia, natus temporibus. Itaque quo fugiat
-          soluta dolore esse.
-        </p>
+        <Card className={styles.mainWrapper}>
+          <div className={styles.brandSection}>
+            <Image className={styles.image} src={MindMateLogo} />
+            <Text size='$lg' style={{ lineHeight: 1, fontWeight: '500' }}>
+              MindMate
+            </Text>
+            <Text size='$xs'>Version: 0.1.0</Text>
+            <Text size='$md' className={styles.description}>
+              MindMate is a Next.js powered mental health support web
+              application. It uses the OpenAI API to provide personalized advice
+              based on user inputs. The user can share their mental health
+              concerns and receive guidance for a happier life. Helping people
+              to deal with negative vibes and lead a positive life.
+            </Text>
+          </div>
+          <div className={styles.devInfoSection}>
+            <Text size='$md'>
+              Developer:
+              <Link
+                href='https://lakshanrukantha.github.io'
+                target='_blank'
+                style={{
+                  marginLeft: '0.5rem',
+                  color: '#0072F5',
+                }}
+              >
+                Lakshan Rukantha
+              </Link>
+            </Text>
+            <Text color='default' size='$xs' style={{ fontweight: '500' }}>
+              Software Engineering Undergraduate - NSBM Green University
+            </Text>
+            <div className={styles.socialSection}>
+              <a href='https://lakshanrukantha.github.io' target='_blank'>
+                <PublicIcon />
+              </a>
+              <a href='https://github.com/LakshanRukantha' target='_blank'>
+                <GitHubIcon />
+              </a>
+              <a
+                href='https://lk.linkedin.com/in/lakshanrukantha'
+                target='_blank'
+              >
+                <LinkedInIcon />
+              </a>
+              <a
+                href='https://facebook.com/LakshanRukantha.LaKi'
+                target='_blank'
+              >
+                <FacebookIcon />
+              </a>
+            </div>
+          </div>
+        </Card>
       </Container>
     </MainLayout>
   );
