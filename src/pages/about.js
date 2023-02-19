@@ -3,6 +3,8 @@ import Image from 'next/image';
 import MindMateLogo from '../../public/mindmate-logo.png';
 import { Container, Card, Text } from '@nextui-org/react';
 import styles from '../styles/about.module.css';
+import LogoDevIcon from '@mui/icons-material/LogoDev';
+import VerifiedIcon from '@mui/icons-material/Verified';
 import PublicIcon from '@mui/icons-material/Public';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -20,8 +22,22 @@ const About = () => {
         <Card className={styles.mainWrapper}>
           <div className={styles.brandSection}>
             <Image className={styles.image} src={MindMateLogo} />
-            <Text size='$lg' style={{ lineHeight: 1, fontWeight: '500' }}>
-              MindMate
+            <Text
+              size='$lg'
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                lineHeight: 1,
+                fontWeight: '500',
+              }}
+            >
+              MindMate{' '}
+              <VerifiedIcon
+                fontSize='small'
+                color='primary'
+                style={{ marginLeft: '0.2rem' }}
+              />
             </Text>
             <Text size='$xs'>Version: 0.1.0</Text>
             <Text size='$md' className={styles.description}>
@@ -33,7 +49,15 @@ const About = () => {
             </Text>
           </div>
           <div className={styles.devInfoSection}>
-            <Text size='$md'>
+            <Text
+              size='$md'
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <LogoDevIcon fontSize='small' style={{ marginRight: '0.1rem' }} />{' '}
               Developer:
               <Link
                 href='https://lakshanrukantha.github.io'
@@ -51,22 +75,22 @@ const About = () => {
             </Text>
             <div className={styles.socialSection}>
               <a href='https://lakshanrukantha.github.io' target='_blank'>
-                <PublicIcon />
+                <PublicIcon color='primary' />
               </a>
               <a href='https://github.com/LakshanRukantha' target='_blank'>
-                <GitHubIcon />
+                <GitHubIcon color='primary' />
               </a>
               <a
                 href='https://lk.linkedin.com/in/lakshanrukantha'
                 target='_blank'
               >
-                <LinkedInIcon />
+                <LinkedInIcon color='primary' />
               </a>
               <a
                 href='https://facebook.com/LakshanRukantha.LaKi'
                 target='_blank'
               >
-                <FacebookIcon />
+                <FacebookIcon color='primary' />
               </a>
             </div>
           </div>

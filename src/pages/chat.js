@@ -101,8 +101,30 @@ const Chat = () => {
               padding: '0.5rem',
             }}
           >
-            <Text b style={{ marginBottom: '0.5rem' }}>
+            <Text
+              b
+              style={{
+                marginBottom: '0.5rem',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-evenly',
+                width: '100%',
+              }}
+            >
               AI Health Support
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
+                <Badge color='success' variant='dot' />
+                <Text style={{ fontWeight: 400, marginLeft: '0.2rem' }}>
+                  Online
+                </Text>
+              </div>
             </Text>
             <Card.Divider />
             <Card
