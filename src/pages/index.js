@@ -27,20 +27,24 @@ export default function Home() {
             <Image
               className={styles.blob1}
               src={blob1}
-              width={420}
-              height={380}
+              width='auto'
+              height='auto'
+              alt='blob1'
             />
             <Image
+              priority={true}
               className={styles.blob2}
               src={blob2}
-              width={520}
-              height={480}
+              width='auto'
+              height='auto'
+              alt='blob2'
             />
             <Image
               className={styles.blob3}
               src={blob3}
-              width={380}
-              height={380}
+              width='auto'
+              height='auto'
+              alt='blob3'
             />
             <div className={styles.heroText}>
               <Text className={styles.headerTitle} weight='bold'>
@@ -56,7 +60,11 @@ export default function Home() {
                 Get Support
               </Button>
             </div>
-            <Lottie className={styles.heroImage} animationData={heroImage} />
+            <Lottie
+              priority='true'
+              className={styles.heroImage}
+              animationData={heroImage}
+            />
           </div>
         </Container>
       </MainLayout>
