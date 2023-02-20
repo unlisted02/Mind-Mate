@@ -96,7 +96,7 @@ const Chat = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              height: 'calc(100vh - 92px)',
+              height: 'calc(100vh - 120px)',
               margin: '0.5rem 0',
               padding: '0.5rem',
             }}
@@ -134,7 +134,7 @@ const Chat = () => {
               variant='flat'
               style={{
                 display: 'flex',
-                height: 'calc(100% - 15rem)',
+                height: 'calc(100% - 16rem)',
                 margin: '0.5rem 0',
                 borderRadius: '0rem',
                 backgroundColor: 'primary',
@@ -230,13 +230,13 @@ const Chat = () => {
                       onSelectionChange={setGender}
                     >
                       <Dropdown.Item
-                        onClick={() => setGender('male')}
+                        onPress={() => setGender('male')}
                         key='male'
                       >
                         Male
                       </Dropdown.Item>
                       <Dropdown.Item
-                        onClick={() => setGender('female')}
+                        onPress={() => setGender('female')}
                         key='female'
                       >
                         Female

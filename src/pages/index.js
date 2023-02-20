@@ -9,8 +9,8 @@ import styles from '../styles/index.module.css';
 export default function Home() {
   const router = useRouter();
 
-  const handleClickChat = () => {
-    router.push('/chat');
+  const handleClickSupport = () => {
+    router.push('/support');
   };
   return (
     <>
@@ -30,8 +30,8 @@ export default function Home() {
                 needs and preferences.
               </Text>
 
-              <Button className={styles.tryBtn} onClick={handleClickChat}>
-                Try It Now
+              <Button className={styles.tryBtn} onPress={handleClickSupport}>
+                Get Support
               </Button>
             </div>
             <Lottie className={styles.heroImage} animationData={heroImage} />

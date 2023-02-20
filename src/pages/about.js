@@ -21,7 +21,7 @@ const About = () => {
       <Container>
         <Card className={styles.mainWrapper}>
           <div className={styles.brandSection}>
-            <Image className={styles.image} src={MindMateLogo} />
+            <Image className={styles.image} src={MindMateLogo} alt='logo' />
             <Text
               size='$lg'
               style={{

@@ -7,7 +7,7 @@ import * as React from 'react';
 export default function App() {
   const collapseItems = [
     { name: 'Home', url: '/' },
-    { name: 'Chat Support', url: '/chat' },
+    { name: 'Get Support', url: '/support' },
     { name: 'Blog', url: '/blog' },
     { name: 'About', url: '/about' },
   ];
@@ -48,7 +48,7 @@ export default function App() {
         variant='underline'
       >
         <Link href='/'>Home</Link>
-        <Link href='/chat'>Chat Support</Link>
+        <Link href='/support'>Get Support</Link>
         <Link href='/blog'>Blog</Link>
         <Link href='/about'>About</Link>
       </Navbar.Content>
