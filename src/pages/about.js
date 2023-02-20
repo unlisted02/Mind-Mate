@@ -1,6 +1,6 @@
 import MainLayout from '@/layouts/MainLayout';
 import Image from 'next/image';
-import MindMateLogo from '../../public/mindmate-logo.png';
+import MindMateLogo from '../assets/images/mindmate-logo.png';
 import { Container, Card, Text } from '@nextui-org/react';
 import styles from '../styles/about.module.css';
 import LogoDevIcon from '@mui/icons-material/LogoDev';

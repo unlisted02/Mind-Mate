@@ -2,7 +2,7 @@ import { Text } from '@nextui-org/react';
 
 function Footer() {
   return (
-    <div>
+    <div style={{ zIndex: 1 }}>
       <Text
         style={{
           textAlign: 'center',

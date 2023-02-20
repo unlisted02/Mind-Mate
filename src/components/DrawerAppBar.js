@@ -1,6 +1,6 @@
 import { Navbar, Text } from '@nextui-org/react';
 import Image from 'next/image';
-import MindMateLogo from '../../public/mindmate-logo.png';
+import MindMateLogo from '../assets/images/mindmate-logo.png';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -13,7 +13,7 @@ export default function App() {
   ];
 
   return (
-    <Navbar isBordered variant='sticky'>
+    <Navbar style={{ zIndex: 1 }} isBordered variant='sticky'>
       <Navbar.Brand>
         <Navbar.Toggle
           aria-label='toggle navigation'

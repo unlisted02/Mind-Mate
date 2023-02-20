@@ -86,7 +86,7 @@ const Chat = () => {
   return (
     <MainLayout>
       <Head>
-        <title>MindMate - Chat</title>
+        <title>MindMate - Support</title>
       </Head>
       <Container>
         <form onSubmit={handleSubmit}>
