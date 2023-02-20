@@ -105,10 +105,13 @@ const Chat = () => {
               b
               style={{
                 marginBottom: '0.5rem',
+                marginLeft: '2rem',
+                marginRight: '2rem',
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
+                maxWidth: '450px',
                 width: '100%',
               }}
             >
