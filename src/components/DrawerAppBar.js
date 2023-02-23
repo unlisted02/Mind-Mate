@@ -8,7 +8,7 @@ export default function App() {
   const collapseItems = [
     { name: 'Home', url: '/' },
     { name: 'Get Support', url: '/support' },
-    { name: 'Blog', url: '/blog' },
+    { name: 'Resources', url: '/resources' },
     { name: 'About', url: '/about' },
   ];
 
@@ -49,7 +49,7 @@ export default function App() {
       >
         <Link href='/'>Home</Link>
         <Link href='/support'>Get Support</Link>
-        <Link href='/blog'>Blog</Link>
+        <Link href='/resources'>Resorces</Link>
         <Link href='/about'>About</Link>
       </Navbar.Content>
       <Navbar.Collapse>
