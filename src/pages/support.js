@@ -34,11 +34,11 @@ const Chat = () => {
       setSolution('');
       setIsLoading(true);
       await axios
-        .post('/api/chatbot', {
+        .post('https://mind-mate-sv15.onrender.com/api/conversation', {
           problem: problem,
         })
         .then(function (response) {
-          let formattedResponse = response.data.result;
+          let formattedResponse = response.data.text;
           formattedResponse = formattedResponse.replace(/^\n/, '');
           formattedResponse = formattedResponse.replace(/^\n/, '');
           setSolution(formattedResponse);
