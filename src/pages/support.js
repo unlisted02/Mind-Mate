@@ -30,7 +30,6 @@ const Chat = () => {
 
       return;
     } else {
-      setProblem('');
       setSolution('');
       setIsLoading(true);
       await axios
@@ -42,9 +41,11 @@ const Chat = () => {
           formattedResponse = formattedResponse.replace(/^\n/, '');
           formattedResponse = formattedResponse.replace(/^\n/, '');
           setSolution(formattedResponse);
+          setProblem('');
           setIsLoading(false);
         })
         .catch(function (error) {
+          setProblem('');
           setIsLoading(false);
           setErrorMessage(error.message);
         });
@@ -166,12 +167,14 @@ const Chat = () => {
                     width: '100%',
                     backgroundColor: '#fff',
                     padding: '0.5rem',
+                    pointerEvents: isLoading ? 'none' : 'all',
+                    color: isLoading ? '#8c8c8c' : 'unset',
                     resize: 'none',
                     border: 'none',
                     outline: 'none',
                   }}
                   status={problemStatus}
-                  disabled={isLoading}
+                  readOnly={isLoading}
                   name='query'
                   aria-label='query'
                   placeholder='Type your problem here..'
