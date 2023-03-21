@@ -7,19 +7,19 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
-  const { gender, age, problem } = req.body;
+  const { problem } = req.body;
   const completion = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: generatePrompt(gender, age, problem),
-    temperature: 0.6,
-    max_tokens: 2048,
+    prompt: generatePrompt(problem),
+    temperature: 1,
+    max_tokens: 1000,
   });
 
   res.status(200).json({
     result: completion.data.choices[0].text,
   });
 
-  function generatePrompt(gender, age, problem) {
-    return `As a ${age} year old ${gender} preson, I need personalised mental health solutions for "${problem}".`;
+  function generatePrompt(problem) {
+    return `I need personalised mental health solutions for "${problem}".`;
   }
 }
