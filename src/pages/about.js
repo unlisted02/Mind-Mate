@@ -56,7 +56,7 @@ const About = () => {
                   style={{ marginLeft: '0.2rem' }}
                 />
               </Text>
-              <Text size='$xs'>Version: 0.1.0</Text>
+              <Text size='$xs'>Version: 0.2.0</Text>
               <Text size='$md' className={styles.description}>
                 MindMate is a Next.js powered mental health support web
                 application. It uses the OpenAI API to provide personalized
