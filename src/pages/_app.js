@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import { motion } from 'framer-motion';
 import { NextUIProvider } from '@nextui-org/react';
 import NextNProgress from 'nextjs-progressbar';
+import { Analytics } from '@vercel/analytics/react';
 
 function App({ Component, pageProps, router }) {
   return (
@@ -25,6 +26,7 @@ function App({ Component, pageProps, router }) {
         <NextNProgress height={5} />
         <Component {...pageProps} />
       </motion.div>
+      <Analytics />
     </NextUIProvider>
   );
 }
