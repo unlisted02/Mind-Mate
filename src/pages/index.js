@@ -8,6 +8,7 @@ import blob2 from '../assets/images/blob2.svg';
 import blob3 from '../assets/images/blob3.svg';
 import { Container, Text, Button } from '@nextui-org/react';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import styles from '../styles/index.module.css';
 
 export default function Home() {
@@ -23,7 +24,7 @@ export default function Home() {
       </Head>
       <MainLayout>
         <Container>
-          <div className={styles.container}>
+          <motion.div className={styles.container}>
             <Image
               className={styles.blob1}
               src={blob1}
@@ -46,12 +47,33 @@ export default function Home() {
               height='auto'
               alt='blob3'
             />
-            <div className={styles.heroText}>
-              <Text className={styles.headerTitle} weight='bold'>
+            <motion.div
+              transition={{
+                delay: 0.5,
+                duration: 1,
+              }}
+              initial={{
+                x: -200,
+                opacity: 0,
+              }}
+              animate={{
+                x: 0,
+                opacity: 1,
+              }}
+              exit={{
+                x: 200,
+                opacity: 0,
+              }}
+              className={styles.heroText}
+            >
+              <Text
+                className={`${styles.headerTitle} textAnimate`}
+                weight='bold'
+              >
                 Unlock the Power of Your Mind with Our AI-Driven Mental Health
                 Web Application
               </Text>
-              <Text className={styles.subHeading}>
+              <Text className={`${styles.subHeading} textAnimate`}>
                 Get personalized mental health solutions based on your unique
                 needs and preferences.
               </Text>
@@ -59,13 +81,29 @@ export default function Home() {
               <Button className={styles.tryBtn} onPress={handleClickSupport}>
                 Get Support
               </Button>
-            </div>
-            <Lottie
-              priority='true'
+            </motion.div>
+            <motion.div
               className={styles.heroImage}
-              animationData={heroImage}
-            />
-          </div>
+              transition={{
+                delay: 0.5,
+                duration: 1,
+              }}
+              initial={{
+                x: 200,
+                opacity: 0,
+              }}
+              animate={{
+                x: 0,
+                opacity: 1,
+              }}
+              exit={{
+                x: -200,
+                opacity: 0,
+              }}
+            >
+              <Lottie priority='true' animationData={heroImage} />
+            </motion.div>
+          </motion.div>
         </Container>
       </MainLayout>
     </>

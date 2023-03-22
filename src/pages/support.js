@@ -1,11 +1,11 @@
 import MainLayout from '@/layouts/MainLayout';
 import axios from 'axios';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   Container,
   Card,
   Button,
-  Textarea,
   Loading,
   Text,
   Badge,
@@ -58,7 +58,23 @@ const Chat = () => {
         <title>MindMate - Support</title>
       </Head>
       <Container>
-        <form onSubmit={handleSubmit}>
+        <motion.form
+          onSubmit={handleSubmit}
+          transition={{
+            type: 'spring',
+            damping: 15,
+            delay: 0.5,
+            duration: 1,
+          }}
+          initial={{
+            y: -100,
+            opacity: 0,
+          }}
+          animate={{
+            y: 0,
+            opacity: 1,
+          }}
+        >
           <Card
             variant='bordered'
             style={{
@@ -67,7 +83,7 @@ const Chat = () => {
               justifyContent: 'space-between',
               borderRadius: '0.5rem',
               height: 'calc(100vh - 120px)',
-              margin: '0.5rem 0',
+              margin: '0.5rem 0rem',
               padding: '0.5rem',
             }}
           >
@@ -201,7 +217,7 @@ const Chat = () => {
               </Card>
             </Card>
           </Card>
-        </form>
+        </motion.form>
       </Container>
     </MainLayout>
   );
