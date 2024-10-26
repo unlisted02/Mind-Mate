@@ -8,6 +8,8 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import PublicIcon from '@mui/icons-material/Public';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
+
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -81,30 +83,21 @@ const About = () => {
                 Developer:
                 <motion.span whileHover={{ y: -2 }}>
                   <Link
-                    href='https://lakshanrukantha.github.io'
+                    href='https://github.com/unlisted02'
                     target='_blank'
                     style={{
                       marginLeft: '0.5rem',
                       color: '#0072F5',
                     }}
                   >
-                    Lakshan Rukantha
+                    Michael Kuria
                   </Link>
                 </motion.span>
               </Text>
               <Text color='default' size='$xs' style={{ fontweight: '500' }}>
-                Software Engineering Undergraduate - NSBM Green University
+                Computer Science Graduate - Maseno University
               </Text>
               <div className={styles.socialSection}>
-                <motion.a
-                  whileHover={{
-                    scale: 1.2,
-                  }}
-                  href='https://lakshanrukantha.github.io'
-                  target='_blank'
-                >
-                  <PublicIcon color='primary' />
-                </motion.a>
                 <motion.a
                   whileHover={{
                     scale: 1.2,
@@ -118,20 +111,21 @@ const About = () => {
                   whileHover={{
                     scale: 1.2,
                   }}
-                  href='https://lk.linkedin.com/in/lakshanrukantha'
+                  href='https://linkedin.com/in/michael-kuria-74aa71257'
                   target='_blank'
                 >
                   <LinkedInIcon color='primary' />
                 </motion.a>
                 <motion.a
-                  whileHover={{
-                    scale: 1.2,
-                  }}
-                  href='https://facebook.com/LakshanRukantha.LaKi'
-                  target='_blank'
-                >
-                  <FacebookIcon color='primary' />
-                </motion.a>
+  whileHover={{
+    scale: 1.2,
+  }}
+  href="https://x.com/mic_kush"
+  target="_blank"
+>
+  <TwitterIcon color="primary" />
+</motion.a>
+
               </div>
             </div>
           </Card>

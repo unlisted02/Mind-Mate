@@ -10,7 +10,7 @@ function Footer() {
           background: 'linear-gradient(to bottom, #bce5ff, #97cefa)',
         }}
       >
-        Made with &hearts; by Lakshan Rukantha
+        Made with &hearts; by Michael Kuria
       </Text>
     </div>
   );
